@@ -69,217 +69,41 @@ db.books.countDocuments()
 db.books.countDocuments({ category: "Database" })
 
 // 13. Find the average price of all books
-db.books.aggregate([
-  {
-    $group: {
-      _id: null,
-      average_price: { $avg: "$price" }
-    }
-  }
-])
+db.books.aggregate([{$group: {_id: null,average_price: { $avg: "$price" }}}])
 
 // 14. Find the maximum book price
-db.books.aggregate([
-  {
-    $group: {
-      _id: null,
-      max_price: { $max: "$price" }
-    }
-  }
-])
+db.books.aggregate([{$group: {_id: null,max_price: { $max: "$price" }}}])
 
 // 15. Find the minimum book price
-db.books.aggregate([
-  {
-    $group: {
-      _id: null,
-      min_price: { $min: "$price" }
-    }
-  }
-])
+db.books.aggregate([{$group: {_id: null,min_price: { $min: "$price" }}}])
 
 // 16. Find the total days borrowed per member
-db.borrowings.aggregate([
-  {
-    $group: {
-      _id: "$member_id",
-      total_days_borrowed: { $sum: "$days_borrowed" }
-    }
-  }
-])
+db.borrowings.aggregate([{$group: {_id: "$member_id",total_days_borrowed: { $sum: "$days_borrowed" }}}])
 
 // 17. Display borrowings along with member details
-db.borrowings.aggregate([
-  {
-    $lookup: {
-      from: "members",
-      localField: "member_id",
-      foreignField: "member_id",
-      as: "member_details"
-    }
-  }
-])
+db.borrowings.aggregate([{$lookup: {from: "members",localField: "member_id",foreignField: "member_id",as: "member_details"}}])
 
 // 18. Display borrowings along with book details
-db.borrowings.aggregate([
-  {
-    $lookup: {
-      from: "books",
-      localField: "book_id",
-      foreignField: "book_id",
-      as: "book_details"
-    }
-  }
-])
+db.borrowings.aggregate([{$lookup: {from: "books",localField: "book_id",foreignField: "book_id",as: "book_details"}}])
 
 // 19. Display member name and book title for each borrowing
-db.borrowings.aggregate([
-  {
-    $lookup: {
-      from: "members",
-      localField: "member_id",
-      foreignField: "member_id",
-      as: "member"
-    }
-  },
-  {
-    $lookup: {
-      from: "books",
-      localField: "book_id",
-      foreignField: "book_id",
-      as: "book"
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      member_name: { $arrayElemAt: ["$member.name", 0] },
-      book_title: { $arrayElemAt: ["$book.title", 0] }
-    }
-  }
-])
+db.borrowings.aggregate([{$lookup: {from: "members",localField: "member_id",foreignField: "member_id",as: "member"}},{$lookup: {from: "books",localField: "book_id",foreignField: "book_id",as: "book"}},{$project: {_id: 0,member_name: { $arrayElemAt: ["$member.name", 0] },book_title: { $arrayElemAt: ["$book.title", 0] }}}])
 
 // 20. Display book title and total times it was borrowed
-db.borrowings.aggregate([
-  {
-    $lookup: {
-      from: "books",
-      localField: "book_id",
-      foreignField: "book_id",
-      as: "book"
-    }
-  },
-  {
-    $group: {
-      _id: "$book_id",
-      total_times_borrowed: { $sum: 1 },
-      book_title: { $first: { $arrayElemAt: ["$book.title", 0] } }
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      book_title: 1,
-      total_times_borrowed: 1
-    }
-  }
-])
+db.borrowings.aggregate([{$lookup: {from: "books",localField: "book_id",foreignField: "book_id",as: "book"}},{$group: {_id: "$book_id",total_times_borrowed: { $sum: 1 },book_title: { $first: { $arrayElemAt: ["$book.title", 0] } }}},{$project: {_id: 0,book_title: 1,total_times_borrowed: 1}}])
 
 // 21. Find the total number of books borrowed by each member
-db.borrowings.aggregate([
-  {
-    $group: {
-      _id: "$member_id",
-      total_books_borrowed: { $sum: 1 }
-    }
-  }
-])
+db.borrowings.aggregate([{$group: {_id: "$member_id",total_books_borrowed: { $sum: 1 }}}])
 
 // 22. Find the most borrowed book
-db.borrowings.aggregate([
-  {
-    $group: {
-      _id: "$book_id",
-      total_borrowed: { $sum: 1 }
-    }
-  },
-  {
-    $sort: { total_borrowed: -1 }
-  },
-  {
-    $limit: 1
-  },
-  {
-    $lookup: {
-      from: "books",
-      localField: "_id",
-      foreignField: "book_id",
-      as: "book"
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      book_title: { $arrayElemAt: ["$book.title", 0] },
-      total_borrowed: 1
-    }
-  }
-])
+db.borrowings.aggregate([{$group: {_id: "$book_id",total_borrowed: { $sum: 1 }}},{$sort: { total_borrowed: -1 }},{$limit: 1},{$lookup: {from: "books",localField: "_id",foreignField: "book_id",as: "book"}},{$project: {_id: 0,book_title: { $arrayElemAt: ["$book.title", 0] },total_borrowed: 1}}])
 
 // 23. Find the total borrowing count by category
-db.borrowings.aggregate([
-  {
-    $lookup: {
-      from: "books",
-      localField: "book_id",
-      foreignField: "book_id",
-      as: "book"
-    }
-  },
-  {
-    $group: {
-      _id: { $arrayElemAt: ["$book.category", 0] },
-      total_borrowings: { $sum: 1 }
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      category: "$_id",
-      total_borrowings: 1
-    }
-  }
-])
+db.borrowings.aggregate([{$lookup: {from: "books",localField: "book_id",foreignField: "book_id",as: "book"}},{$group: {_id: { $arrayElemAt: ["$book.category", 0] },total_borrowings: { $sum: 1 }}},{$project: {_id: 0,category: "$_id",total_borrowings: 1}}])
 
 // 24. Find members who borrowed more than one book
-db.borrowings.aggregate([
-  {
-    $group: {
-      _id: "$member_id",
-      total_books_borrowed: { $sum: 1 }
-    }
-  },
-  {
-    $match: {
-      total_books_borrowed: { $gt: 1 }
-    }
-  },
-  {
-    $lookup: {
-      from: "members",
-      localField: "_id",
-      foreignField: "member_id",
-      as: "member"
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      member_name: { $arrayElemAt: ["$member.name", 0] },
-      total_books_borrowed: 1
-    }
-  }
-])
+db.borrowings.aggregate([{$group: { _id: "$member_id",total_books_borrowed: { $sum: 1 }}},{$match: {total_books_borrowed: { $gt: 1 }} },{ $lookup: {from: "members",localField: "_id",foreignField: "member_id",as: "member"} },
+  {$project: {_id: 0,member_name: { $arrayElemAt: ["$member.name", 0] },total_books_borrowed: 1 }])
 
 // 25. Display member name, city, total books borrowed
 // Sort by highest books borrowed first
