@@ -1,5 +1,5 @@
 //Created a connection online_store_db
-//using the created connection
+//Using the created connection
 
 use("online_store_db")
 
