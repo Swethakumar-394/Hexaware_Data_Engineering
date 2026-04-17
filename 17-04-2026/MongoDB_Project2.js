@@ -8,33 +8,33 @@ use("hospital_db")
 
 // Create patients collection
 db.patients.insertMany([
-  { patient_id: 1, name: "Aarav", city: "Hyderabad", age: 29, gender: "Male" },
-  { patient_id: 2, name: "Priya", city: "Bangalore", age: 34, gender: "Female" },
-  { patient_id: 3, name: "Rahul", city: "Mumbai", age: 41, gender: "Male" },
-  { patient_id: 4, name: "Sneha", city: "Delhi", age: 26, gender: "Female" },
-  { patient_id: 5, name: "Kiran", city: "Hyderabad", age: 37, gender: "Male" },
-  { patient_id: 6, name: "Meera", city: "Chennai", age: 31, gender: "Female" }
+{ patient_id: 1, name: "Aarav", city: "Hyderabad", age: 29, gender: "Male" },
+{ patient_id: 2, name: "Priya", city: "Bangalore", age: 34, gender: "Female" },
+{ patient_id: 3, name: "Rahul", city: "Mumbai", age: 41, gender: "Male" },
+{ patient_id: 4, name: "Sneha", city: "Delhi", age: 26, gender: "Female" },
+{ patient_id: 5, name: "Kiran", city: "Hyderabad", age: 37, gender: "Male" },
+{ patient_id: 6, name: "Meera", city: "Chennai", age: 31, gender: "Female" }
 ])
 
 // Create doctors collection
 db.doctors.insertMany([
-  { doctor_id: 101, name: "Dr. Sharma", specialization: "Cardiology", consultation_fee: 1200, city: "Hyderabad" },
-  { doctor_id: 102, name: "Dr. Iyer", specialization: "Dermatology", consultation_fee: 900, city: "Bangalore" },
-  { doctor_id: 103, name: "Dr. Khan", specialization: "Orthopedics", consultation_fee: 1500, city: "Mumbai" },
-  { doctor_id: 104, name: "Dr. Reddy", specialization: "Pediatrics", consultation_fee: 800, city: "Delhi" },
-  { doctor_id: 105, name: "Dr. Mehta", specialization: "Neurology", consultation_fee: 1600, city: "Hyderabad" }
+{ doctor_id: 101, name: "Dr. Sharma", specialization: "Cardiology", consultation_fee: 1200, city: "Hyderabad" },
+{ doctor_id: 102, name: "Dr. Iyer", specialization: "Dermatology", consultation_fee: 800, city: "Bangalore" },
+{ doctor_id: 103, name: "Dr. Khan", specialization: "Orthopedics", consultation_fee: 1500, city: "Mumbai" },
+{ doctor_id: 104, name: "Dr. Reddy", specialization: "Pediatrics", consultation_fee: 900, city: "Delhi" },
+{ doctor_id: 105, name: "Dr. Mehta", specialization: "Neurology", consultation_fee: 2000, city: "Hyderabad" }
 ])
 
 // Create appointments collection
 db.appointments.insertMany([
-  { appointment_id: 1001, patient_id: 1, doctor_id: 101, visit_date: "2026-03-01", status: "Completed", bill_amount: 1500 },
-  { appointment_id: 1002, patient_id: 2, doctor_id: 102, visit_date: "2026-03-02", status: "Pending", bill_amount: 900 },
-  { appointment_id: 1003, patient_id: 1, doctor_id: 105, visit_date: "2026-03-03", status: "Completed", bill_amount: 2000 },
-  { appointment_id: 1004, patient_id: 3, doctor_id: 103, visit_date: "2026-03-04", status: "Cancelled", bill_amount: 1500 },
-  { appointment_id: 1005, patient_id: 5, doctor_id: 101, visit_date: "2026-03-05", status: "Completed", bill_amount: 1800 },
-  { appointment_id: 1006, patient_id: 6, doctor_id: 104, visit_date: "2026-03-06", status: "Pending", bill_amount: 800 },
-  { appointment_id: 1007, patient_id: 4, doctor_id: 104, visit_date: "2026-03-07", status: "Cancelled", bill_amount: 700 },
-  { appointment_id: 1008, patient_id: 3, doctor_id: 105, visit_date: "2026-03-08", status: "Completed", bill_amount: 2200 }
+{ appointment_id: 1001, patient_id: 1, doctor_id: 101, visit_date: "2026-03-01", status: "Completed", bill_amount: 1200 },
+{ appointment_id: 1002, patient_id: 2, doctor_id: 102, visit_date: "2026-03-02", status: "Completed", bill_amount: 800 },
+{ appointment_id: 1003, patient_id: 1, doctor_id: 105, visit_date: "2026-03-04", status: "Pending", bill_amount: 2000 },
+{ appointment_id: 1004, patient_id: 3, doctor_id: 103, visit_date: "2026-03-05", status: "Completed", bill_amount: 1500 },
+{ appointment_id: 1005, patient_id: 5, doctor_id: 101, visit_date: "2026-03-07", status: "Cancelled", bill_amount: 1200 },
+{ appointment_id: 1006, patient_id: 6, doctor_id: 104, visit_date: "2026-03-08", status: "Completed", bill_amount: 900 },
+{ appointment_id: 1007, patient_id: 4, doctor_id: 104, visit_date: "2026-03-09", status: "Pending", bill_amount: 900 },
+{ appointment_id: 1008, patient_id: 3, doctor_id: 105, visit_date: "2026-03-10", status: "Completed", bill_amount: 2000 }
 ])
 
 // Basic queries
