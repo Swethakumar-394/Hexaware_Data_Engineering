@@ -1,3 +1,5 @@
+//MongoDB Capstone Project 1
+//Online Store Order Analytics
 //Created a connection online_store_db
 //Using the created connection
 
