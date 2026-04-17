@@ -8,34 +8,34 @@ use("online_store_db")
 
 // Customers collection
 db.customers.insertMany([
-  { customer_id: 1, name: "Aarav", city: "Hyderabad", membership: "Gold", age: 25 },
-  { customer_id: 2, name: "Priya", city: "Bangalore", membership: "Silver", age: 28 },
-  { customer_id: 3, name: "Rahul", city: "Mumbai", membership: "Gold", age: 30 },
-  { customer_id: 4, name: "Sneha", city: "Delhi", membership: "Silver", age: 27 },
-  { customer_id: 5, name: "Kiran", city: "Hyderabad", membership: "Gold", age: 32 },
-  { customer_id: 6, name: "Meera", city: "Chennai", membership: "Bronze", age: 24 }
+{ customer_id: 1, name: "Aarav", city: "Hyderabad", membership: "Gold", age: 24 },
+{ customer_id: 2, name: "Priya", city: "Bangalore", membership: "Silver", age: 28 },
+{ customer_id: 3, name: "Rahul", city: "Mumbai", membership: "Gold", age: 32 },
+{ customer_id: 4, name: "Sneha", city: "Delhi", membership: "Silver", age: 26 },
+{ customer_id: 5, name: "Kiran", city: "Hyderabad", membership: "Gold", age: 30 },
+{ customer_id: 6, name: "Meera", city: "Chennai", membership: "Bronze", age: 27 }
 ])
 
 // Products collection
 db.products.insertMany([
-  { product_id: 101, name: "Laptop", category: "Electronics", price: 75000, stock: 10 },
-  { product_id: 102, name: "Phone", category: "Electronics", price: 50000, stock: 15 },
-  { product_id: 103, name: "Desk", category: "Furniture", price: 15000, stock: 8 },
-  { product_id: 104, name: "Chair", category: "Furniture", price: 7000, stock: 20 },
-  { product_id: 105, name: "Tablet", category: "Electronics", price: 30000, stock: 12 },
-  { product_id: 106, name: "Printer", category: "Electronics", price: 12000, stock: 5 }
+{ product_id: 101, name: "Laptop", category: "Electronics", price: 75000, stock: 10 },
+{ product_id: 102, name: "Phone", category: "Electronics", price: 50000, stock: 15 },
+{ product_id: 103, name: "Desk", category: "Furniture", price: 15000, stock: 8 },
+{ product_id: 104, name: "Chair", category: "Furniture", price: 7000, stock: 20 },
+{ product_id: 105, name: "Tablet", category: "Electronics", price: 30000, stock: 12 },
+{ product_id: 106, name: "Printer", category: "Electronics", price: 12000, stock: 5 }
 ])
 
 // Orders collection
 db.orders.insertMany([
-  { order_id: 1001, customer_id: 1, product_id: 101, quantity: 1, order_date: "2026-03-01", status: "Delivered" },
-  { order_id: 1002, customer_id: 2, product_id: 102, quantity: 2, order_date: "2026-03-02", status: "Pending" },
-  { order_id: 1003, customer_id: 1, product_id: 105, quantity: 1, order_date: "2026-03-03", status: "Delivered" },
-  { order_id: 1004, customer_id: 3, product_id: 103, quantity: 1, order_date: "2026-03-04", status: "Cancelled" },
-  { order_id: 1005, customer_id: 5, product_id: 102, quantity: 3, order_date: "2026-03-05", status: "Delivered" },
-  { order_id: 1006, customer_id: 6, product_id: 104, quantity: 4, order_date: "2026-03-06", status: "Pending" },
-  { order_id: 1007, customer_id: 4, product_id: 106, quantity: 2, order_date: "2026-03-07", status: "Cancelled" },
-  { order_id: 1008, customer_id: 3, product_id: 101, quantity: 1, order_date: "2026-03-08", status: "Delivered" }
+{ order_id: 1001, customer_id: 1, product_id: 101, quantity: 1, order_date: "2026-03-01", status: "Delivered" },
+{ order_id: 1002, customer_id: 2, product_id: 102, quantity: 2, order_date: "2026-03-02", status: "Delivered" },
+{ order_id: 1003, customer_id: 1, product_id: 105, quantity: 1, order_date: "2026-03-03", status: "Pending" },
+{ order_id: 1004, customer_id: 3, product_id: 103, quantity: 1, order_date: "2026-03-05", status: "Delivered" },
+{ order_id: 1005, customer_id: 5, product_id: 102, quantity: 3, order_date: "2026-03-07", status: "Cancelled" },
+{ order_id: 1006, customer_id: 6, product_id: 104, quantity: 4, order_date: "2026-03-08", status: "Delivered" },
+{ order_id: 1007, customer_id: 4, product_id: 106, quantity: 2, order_date: "2026-03-09", status: "Pending" },
+{ order_id: 1008, customer_id: 3, product_id: 101, quantity: 1, order_date: "2026-03-10", status: "Delivered" }
 ])
 
 
