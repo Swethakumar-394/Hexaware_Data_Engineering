@@ -38,7 +38,9 @@ db.orders.insertMany([
   { order_id: 1008, customer_id: 3, product_id: 101, quantity: 1, order_date: "2026-03-08", status: "Delivered" }
 ])
 
+
 //Basic Queries
+
 // 1. All customers
 db.customers.find()
 
