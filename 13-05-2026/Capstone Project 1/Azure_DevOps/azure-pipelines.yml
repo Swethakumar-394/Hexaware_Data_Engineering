@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- script: |
+    pip install pandas numpy pyspark
+    python python/retail_analysis.py
+  displayName: 'Run Retail Analysis'
+
+- script: |
+    python pyspark/store_insights.py
+  displayName: 'Run PySpark Analysis'
+
+- script: |
+    echo "Retail Sales Pipeline Completed"
+  displayName: 'Pipeline Completion'
