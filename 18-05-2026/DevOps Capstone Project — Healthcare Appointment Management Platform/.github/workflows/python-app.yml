@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 18-05-2026/DevOps Capstone Project — Healthcare Appointment Management Platform
+        working-directory: ./18-05-2026/DevOps Capstone Project — Healthcare Appointment Management Platform
 
     steps:
       - name: Checkout Code
